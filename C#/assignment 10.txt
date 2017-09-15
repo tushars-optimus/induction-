@@ -1,0 +1,5 @@
+Problem 1 :-
+ This program will not run because stu is trying to access protected level access modifier "_age"
+
+Problem 2 :-
+  This program will not run because potected variable can be accessed by its own class and or in a class which is derived from that class.  
