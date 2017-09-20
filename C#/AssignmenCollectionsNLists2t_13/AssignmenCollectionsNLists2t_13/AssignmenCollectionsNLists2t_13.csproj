@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{17D09FD1-A775-4931-A145-F25AD0ABDF10}</ProjectGuid>
+    <ProjectGuid>{DE6DC231-7EB2-446E-A1C5-D6F009746A02}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Assignment_8</RootNamespace>
-    <AssemblyName>Assignment-8</AssemblyName>
+    <RootNamespace>AssignmenCollectionsNLists2t_13</RootNamespace>
+    <AssemblyName>AssignmenCollectionsNLists2t_13</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddVehicles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudentDetail.cs" />
-    <Compile Include="StudentsDetail.cs" />
+    <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -11,14 +11,14 @@ namespace OOPS_Concepts
     {
         static void Main(string[] args)
         {
-            Car Car=new Car();
-            Truck Truck=new Truck();
-            Bike Bike=new Bike();
-            Bicycle Bicycle=new Bicycle();
-            Car.Accelerate(50);
-            Truck.Accelerate(40);
-            Bicycle.Accelerate(30);
-            Bicycle.Deaccelarate(10);
+            Car car=new Car();
+            Truck truck=new Truck();
+            Bike bike=new Bike();
+            Bicycle bicycle=new Bicycle();
+            car.Accelerate(50);
+            truck.Accelerate(40);
+            bicycle.Accelerate(30);
+            bicycle.Deaccelarate(10);
             
             Console.WriteLine(@"Which vehicle Statusu Would you like to see
 1-Bicycle
@@ -41,21 +41,21 @@ namespace OOPS_Concepts
             Console.WriteLine();
             //For taking user choice
             switch(choice){
-                case 1: Console.WriteLine("Bicycle moving status : " + Bicycle.isMoving());
-                    Bicycle.Details();
-                    Bicycle.safety();
+                case 1: Console.WriteLine("Bicycle moving status : " + bicycle.isMoving());
+                    bicycle.Details();
+                    bicycle.Safety();
                     break;
-                case 2: Console.WriteLine("Bike moving status : " + Bike.isMoving());
-                    Bike.Details();
-                    Bike.safety();
+                case 2: Console.WriteLine("Bike moving status : " + bike.isMoving());
+                    bike.Details();
+                    bike.Safety();
                     break;
-                case 3: Console.WriteLine("Truck moving status : " + Truck.isMoving());
-                    Truck.Details();
-                    Truck.safety();
+                case 3: Console.WriteLine("Truck moving status : " + truck.isMoving());
+                    truck.Details();
+                    truck.Safety();
                     break;
-                case 4: Console.WriteLine("Car moving status : " + Car.isMoving());
-                        Car.Details();
-                        Car.safety();
+                case 4: Console.WriteLine("Car moving status : " + car.isMoving());
+                        car.Details();
+                        car.Safety();
                     break;
                 default:
                     Console.WriteLine("Not exist");

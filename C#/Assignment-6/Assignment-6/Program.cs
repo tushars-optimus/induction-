@@ -10,37 +10,37 @@ namespace Assignment_6
     {
         static void Main(string[] args)
         {
-            statistics show1 = new statistics();
-            StudentDetails stats1 = new StudentDetails();
+            statistics ShowStudent = new statistics();
+            StudentDetails StatsStudent = new StudentDetails();
             //Details for 1st Person
-            stats1.AddNames("Tushar");
-            stats1.AddPhone(005830393);
-            stats1.AddMaths(85);
-            stats1.AddPhysics(80);
-            stats1.AddChemistry(70);
+            StatsStudent.AddNames("Tushar");
+            StatsStudent.AddPhone(005830393);
+            StatsStudent.AddMaths(85);
+            StatsStudent.AddPhysics(80);
+            StatsStudent.AddChemistry(70);
             //Details for 2nd Person
-            stats1.AddNames("Rahul");
-            stats1.AddPhone(002830393);
-            stats1.AddMaths(83);
-            stats1.AddPhysics(90);
-            stats1.AddChemistry(50);
+            StatsStudent.AddNames("Rahul");
+            StatsStudent.AddPhone(002830393);
+            StatsStudent.AddMaths(83);
+            StatsStudent.AddPhysics(90);
+            StatsStudent.AddChemistry(50);
             //Details for 3rd Person
-            stats1.AddNames("Raj");
-            stats1.AddPhone(505830393);
-            stats1.AddMaths(75);
-            stats1.AddPhysics(89);
-            stats1.AddChemistry(79);
+            StatsStudent.AddNames("Raj");
+            StatsStudent.AddPhone(505830393);
+            StatsStudent.AddMaths(75);
+            StatsStudent.AddPhysics(89);
+            StatsStudent.AddChemistry(79);
             //Details for 4th Person
-            stats1.AddNames("Mohit");
-            stats1.AddPhone(005838393);
-            stats1.AddMaths(96);
-            stats1.AddPhysics(77);
-            stats1.AddChemistry(74);
+            StatsStudent.AddNames("Mohit");
+            StatsStudent.AddPhone(005838393);
+            StatsStudent.AddMaths(96);
+            StatsStudent.AddPhysics(77);
+            StatsStudent.AddChemistry(74);
             //Calculating highest marks
-            show1 = stats1.Computetatistics();
-            Console.WriteLine(show1.namem+" : "+show1.highestgradem);
-            Console.WriteLine(show1.namep + " : " + show1.highestgradep);
-            Console.WriteLine(show1.namec + " : " + show1.highestgradec);
+            ShowStudent = StatsStudent.Computetatistics();
+            Console.WriteLine(ShowStudent.Namem + " : " + ShowStudent.HghestGradem);
+            Console.WriteLine(ShowStudent.Namep + " : " + ShowStudent.HighestGradep);
+            Console.WriteLine(ShowStudent.Namec + " : " + ShowStudent.HighestGradec);
             Console.ReadLine();
         }
     }

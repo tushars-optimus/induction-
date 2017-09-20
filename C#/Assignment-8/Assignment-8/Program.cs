@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Assignment_8
 {
-    public enum attribute
+    public enum Attribute
     {
-        name=1,address,age,phone
+        Name=1,Address,Age,Phone
         
     };
     class Student
     {
+        
         static void Main(string[] args)
         {
             StudentDetail[] student= new StudentDetail[3];
@@ -27,29 +28,30 @@ namespace Assignment_8
             }
             Console.WriteLine(@"what do you want to see
 1-Name 2-Address 3-age, 4-phone");
+             
             
-            int Choice = int.Parse(Console.ReadLine());
+            int _choice = int.Parse(Console.ReadLine());
 
-            switch (Choice)
+            switch (_choice)
             {
                 case 1: for (int i = 0; i < 3; i++)
                     {
-                        Console.WriteLine(student[i].name1);
+                        Console.WriteLine(student[i].Name);
                     }
                     break;
                 case 2: for (int i = 0; i < 3; i++)
                     {
-                        Console.WriteLine(student[i].address1);
+                        Console.WriteLine(student[i].Address);
                     }
                     break;
                 case 3: for (int i = 0; i < 3; i++)
                     {
-                        Console.WriteLine(student[i].age1);
+                        Console.WriteLine(student[i].Age);
                     }
                     break;
                 case 4: for (int i = 0; i < 3; i++)
                     {
-                        Console.WriteLine(student[i].phone1);
+                        Console.WriteLine(student[i].Phone);
                     }
                     break;
                 default:

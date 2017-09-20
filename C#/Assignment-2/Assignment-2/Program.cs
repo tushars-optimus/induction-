@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    class Program
+    class TestSwitch
     {
         private static string _choice;
         static void Main(string[] args)

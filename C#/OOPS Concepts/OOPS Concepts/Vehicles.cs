@@ -8,32 +8,32 @@ namespace OOPS_Concepts
 {
     class Vehicles
     {
-        public string make;
+        public string Make;
         public int YearOFManufacturing;
         public string Mode;
-        public float speed;
+        public float Speed;
         public Vehicles()
         {
-            make = null;
+            Make = null;
             YearOFManufacturing = 0;
             Mode = null;
-            speed = 0;
+            Speed = 0;
         }
         public void Accelerate(int speed1)
         {
-            speed += speed1;
+            Speed += Speed;
         }
         public void Deaccelarate(int speed1)
         {
-            speed -= speed1;
+            Speed -= Speed;
         }
-        public void stop()
+        public void Stop()
         {
-            speed = 0;
+            Speed = 0;
         }
         public Boolean isMoving()
         {
-            if (speed <= 0)
+            if (Speed <= 0)
             {
                 return false;
             }

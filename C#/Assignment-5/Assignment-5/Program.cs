@@ -8,20 +8,22 @@ namespace Assignment_5
 {
     class TestStrings
     {
-        static public string[] GetStringArray()
+        static public string[] GetWeekDays()
         {
-            string[] s1 = { "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday", "Sunday" };
-            return s1;
+            string[] WeekDays = { "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday", "Sunday" };
+            return WeekDays;
         }
         static void Main(string[] args)
         {
             Console.WriteLine("Weeks are ");
-            string[] s1=new string[7];
-            s1 = GetStringArray();
-            foreach(string week in s1)
+            Console.WriteLine();
+            string[] WeekDays = new string[7];
+            WeekDays = GetWeekDays();
+            foreach (string days in WeekDays)
             {
-                Console.WriteLine(week);
+                Console.WriteLine(days);
             }
+            Console.ReadLine();
             
 
         }

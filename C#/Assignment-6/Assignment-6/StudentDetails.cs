@@ -40,27 +40,27 @@ namespace Assignment_6
         }
         public statistics Computetatistics()
         {
-            statistics stats = new statistics();
+            statistics StatsStudent = new statistics();
             for (int i = 0; i < Physics.Count;i++)
             {
-                if (Physics[i] > stats.highestgradep)
+                if (Physics[i] > StatsStudent.HighestGradep)
                 {
-                    stats.highestgradep = Math.Max(Physics[i], stats.highestgradep);
-                    stats.namep = Names[i];
+                    StatsStudent.HighestGradep = Math.Max(Physics[i], StatsStudent.HighestGradep);
+                    StatsStudent.Namep = Names[i];
                 }
-                if (Maths[i] > stats.highestgradem)
+                if (Maths[i] > StatsStudent.HghestGradem)
                 {
-                    stats.highestgradem = Math.Max(Maths[i], stats.highestgradem);
-                    stats.namem = Names[i];
+                    StatsStudent.HghestGradem = Math.Max(Maths[i], StatsStudent.HghestGradem);
+                    StatsStudent.Namem = Names[i];
                 }
-                if (Chemistrys[i] > stats.highestgradec)
+                if (Chemistrys[i] > StatsStudent.HighestGradec)
                 {
-                    stats.highestgradec = Math.Max(Chemistrys[i], stats.highestgradec);
-                    stats.namec = Names[i];
+                    StatsStudent.HighestGradec = Math.Max(Chemistrys[i], StatsStudent.HighestGradec);
+                    StatsStudent.Namec = Names[i];
                 }
             }
-            
-             return stats;
+
+            return StatsStudent;
         }
         List<int> Phones;
         List<string> Names;

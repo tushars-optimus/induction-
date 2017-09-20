@@ -10,16 +10,18 @@ namespace Assignment_6
     {
         public statistics ()
 	{
-            highestgradec=0;
-            highestgradep = 0;
-            highestgradem = 0;
+            HighestGradec=0;
+            HighestGradep = 0;
+            HghestGradem = 0;
             
 	}
-        public float highestgradep;
-        public float highestgradec;
-        public float highestgradem;
-        public string namep;
-        public string namec;
-        public string namem;    
+        public float HighestGradep;
+        public float HighestGradec;
+        public float HghestGradem;
+        public string Namep;
+        public string Namec;
+        public string Namem;
+
+       
     }
 }

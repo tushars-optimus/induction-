@@ -40,28 +40,28 @@ namespace Assignment_8
             Console.WriteLine("phone" + " " + _phone);
             Console.WriteLine();
         }
-        public string name1
+        public string Name
         {
             get
             {
                 return _name;
             }
         }
-        public string address1
+        public string Address
         {
             get
             {
                 return _address;
             }
         }
-        public int age1
+        public int Age
         {
             get
             {
                 return _age;
             }
         }
-        public int phone1
+        public int Phone
         {
             get
             {

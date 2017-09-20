@@ -13,7 +13,7 @@ namespace OOPS_Concepts
             Console.WriteLine("Truck is heavy vehicle");
             Console.WriteLine("Tyres : " + "6 ");
         }
-        public void safety()
+        public void Safety()
         {
             Console.WriteLine("Precaution : Seat belt is required");
         }

@@ -13,7 +13,7 @@ namespace OOPS_Concepts
             Console.WriteLine("Bicycle is light vehicle");
             Console.WriteLine("Tyres : " + "2 ");
         }
-        public void safety()
+        public void Safety()
         {
             Console.WriteLine("Precaution : No requirement");
         }
