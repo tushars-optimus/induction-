@@ -1,0 +1,111 @@
+﻿<Window x:Class="AvigilonProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:Local="clr-namespace:AvigilonProject"
+        Title="Avigilon Project" WindowState="Maximized" BorderBrush="Black" Foreground="Blue" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+    <Window.Resources>
+        <Local:ViewModelLocator x:Key="Locator" />
+    </Window.Resources>
+       <Grid DataContext="{Binding Path=AvigilonProjectViewModel, Source={StaticResource Locator}}" Margin="0,10,0,0">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3.5*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="8*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+                <GroupBox Focusable="True"  Padding="4" Header="Avigilon" Grid.Row="0" Margin="20,0,0,0" Name="avigilon" >
+                <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="10,0,0,0" Text="{Binding SearchAvigilon, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Width="320" />
+                        <Image Source="/ViewModel/Images/magnify.PNG" Height="18"/>
+                        </StackPanel>
+
+                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+                            <DataGrid CanUserAddRows = "False" Margin="10" SelectedItem="{Binding SelectedAvigilons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                      ItemsSource="{Binding Avigilons ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False" SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Alarm" Width="161" Binding="{ Binding Alarm}"/>
+                                    <DataGridTextColumn Header="Site" Width="157" Binding="{ Binding Site}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                </StackPanel>
+            </GroupBox>
+                <GridSplitter Grid.Row="1" Background="Gray"  Height="5" HorizontalAlignment="Stretch" Margin="25" Name="velocity" Focusable="True" >
+                    <GridSplitter.Template>
+                        <ControlTemplate>
+                            <Border BorderBrush="Black" Background="LightGray" 
+                             CornerRadius="5">
+                            <Canvas>
+                                    <Line X1="140" X2="190" Y1="0" Y2="0"
+                                  Stroke="White" StrokeThickness="1"/>
+                                <Line X1="140" X2="190" Y1="1" Y2="1"
+                                  Stroke="Gray" StrokeThickness="1"/>
+                                <Line X1="140" X2="190" Y1="4" Y2="4"
+                                  Stroke="White" StrokeThickness="1"/>
+                                <Line X1="140" X2="190" Y1="5" Y2="5"
+                                  Stroke="Gray" StrokeThickness="1"/>
+                            </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </GridSplitter.Template>
+                </GridSplitter>
+                <GroupBox Focusable="True" Padding="4" Header="Velocity" Grid.Row="2" Margin="20,0,0,0" >
+                <StackPanel >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="10,0,0,0" Text="{Binding SearchVelocity, UpdateSourceTrigger=PropertyChanged , Mode=TwoWay}" Width="320"  />
+                            <Image Source="/ViewModel/Images/magnify.PNG" Height="18"/>
+                        </StackPanel>
+                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                            <DataGrid CanUserAddRows = "False"  Margin="10" SelectedItem="{Binding SelectedVelocity, Mode=TwoWay}" 
+                                      ItemsSource="{Binding Velocitys ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn  Header="Description" Width="317.6" Binding="{ Binding Description}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </StackPanel>
+            </GroupBox>            
+        </Grid>
+        <StackPanel Grid.Column="1" >
+                <Button Margin="0,300,0,0"  Content="&gt;&gt;" Height="20" Width="40" Command="{Binding Create}"  >
+            </Button>
+                <Button Margin="0,20,0,0" Content="&lt;&lt;" Height="20" Width="40" Command="{Binding Delete}" >
+            </Button>
+        </StackPanel>
+        <GroupBox Padding="4" Header="Alarm Mapping" Grid.Column="2" Margin="0,10,20,0" >
+            <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="10,0,0,0" Text="{Binding SearchMap, UpdateSourceTrigger=PropertyChanged , Mode=TwoWay}" Width="320"  />
+                        <Image Source="/ViewModel/Images/magnify.PNG" Height="18"/>
+                    </StackPanel>
+                    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid CanUserAddRows = "False" Margin="10" SelectedItem="{Binding SelectedAlarmMappingModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
+                                  ItemsSource="{Binding AlarmMappingModel ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Alarm" Width="128" Binding="{ Binding Alarm, Mode=TwoWay}"/>
+                                <DataGridTextColumn Header="Site" Width="128" Binding="{ Binding Site, Mode=TwoWay}"/>
+                                <DataGridTextColumn Header="Description" Width="554" Binding="{ Binding Description, Mode=TwoWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                  </StackPanel>
+        </GroupBox>
+       
+    </Grid>
+        <Button Command="{Binding Config}" Grid.Row="1" Margin="20,11,0,0" Content="Configuration Connection" Height="25" Width="180" HorizontalAlignment="Left"/>
+    </Grid>
+
+</Window>
