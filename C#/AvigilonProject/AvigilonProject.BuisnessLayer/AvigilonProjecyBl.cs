@@ -57,7 +57,7 @@ namespace AvigilonProject.BuisnessLayer
         /// <param name="alarm"></param>
         /// <param name="site"></param>
         /// <param name="descriptioin"></param>
-        public void select(string alarm,string site,string descriptioin)
+        public void Selects(string alarm,string site,string descriptioin)
         {
 
             var projectentities = new AlarmMapping { Alarm = alarm, Sites = site, Descriptions = descriptioin };
@@ -90,7 +90,7 @@ namespace AvigilonProject.BuisnessLayer
         /// </summary>
         /// <param name="alarm">Alarm</param>
         /// <param name="descriptioin">Description</param>
-        public void delete(string alarm, string descriptioin)
+        public void Deletes(string alarm, string descriptioin)
         {
 
             var del = ProjectEntities.AlarmMappings.Where(x => x.Alarm == alarm && x.Descriptions==descriptioin).First();

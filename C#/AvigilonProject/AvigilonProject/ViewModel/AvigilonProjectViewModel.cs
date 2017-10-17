@@ -107,7 +107,7 @@ namespace AvigilonProject.ViewModel
             SelectedAvigilons = new AvigilonModel();
             SelectedVelocity = new VelocityModel();
             SelectedAlarmMappingModel = new AlarmMappingModel();
-            AvigilonRaedOnly();
+            AvigilonReadOnly();
             VelocityReadOnly();
             AlarmMappingVm();
 
@@ -116,7 +116,7 @@ namespace AvigilonProject.ViewModel
         /// <summary>
         /// TO store value from bl to Avigilons list 
         /// </summary>
-        public void AvigilonRaedOnly()
+        public void AvigilonReadOnly()
         {
             var Avi = Blobject.ReadAvigilons();
             Avigilons.Clear();
@@ -231,7 +231,7 @@ namespace AvigilonProject.ViewModel
 
         public void Select(object parameter)
         {
-            Blobject.select(SelectedAvigilons.Alarm, SelectedAvigilons.Site, SelectedVelocity.Description);
+            Blobject.Selects(SelectedAvigilons.Alarm, SelectedAvigilons.Site, SelectedVelocity.Description);
             AlarmMappingVm();
         }
         
@@ -258,7 +258,7 @@ namespace AvigilonProject.ViewModel
 
         public void Deselect(object parameter)
         {
-            Blobject.delete(SelectedAlarmMappingModel.Alarm, SelectedAlarmMappingModel.Description);
+            Blobject.Deletes(SelectedAlarmMappingModel.Alarm, SelectedAlarmMappingModel.Description);
             AlarmMappingVm();
             SelectedAlarmMappingModel = new AlarmMappingModel();
 
@@ -288,7 +288,7 @@ namespace AvigilonProject.ViewModel
             if (String.IsNullOrEmpty(SearchAvigilon))
             {
 
-                AvigilonRaedOnly();
+                AvigilonReadOnly();
             }
             else
             {

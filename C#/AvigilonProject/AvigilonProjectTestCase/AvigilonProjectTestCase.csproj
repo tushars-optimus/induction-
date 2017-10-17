@@ -35,7 +35,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.7.142\lib\net45\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -55,6 +70,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BuissnessLayer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AvigilonProject.BuisnessLayer\AvigilonProject.BuisnessLayer.csproj">
+      <Project>{b12aa9fb-d649-4dcb-94b2-a5fefb070781}</Project>
+      <Name>AvigilonProject.BuisnessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvigilonProject.DataAccess\AvigilonProject.DataAccess.csproj">
+      <Project>{ba842c18-de87-4c18-bbe6-73fab427f87b}</Project>
+      <Name>AvigilonProject.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvigilonProject\AvigilonProject.UI.csproj">
+      <Project>{9da7f158-8346-4b7e-ac65-d6e522176ae3}</Project>
+      <Name>AvigilonProject.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
