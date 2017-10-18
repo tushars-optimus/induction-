@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AvigilonProject.BuisnessLayer.Model
 {
-    public class Avigilons
+    public class AlarmSite
     {
         private string _alarm;
 

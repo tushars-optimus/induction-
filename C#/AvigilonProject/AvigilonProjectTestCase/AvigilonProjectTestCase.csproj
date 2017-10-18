@@ -65,8 +65,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UILayer\AvigilonAddIp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UILayer\AvigilonPoject.cs" />
+    <Compile Include="UILayer\AvigilonProject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BuissnessLayer\" />

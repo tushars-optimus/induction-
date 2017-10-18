@@ -4,18 +4,20 @@ using AvigilonProject.Model;
 using System.Collections.ObjectModel;
 
 using System.Windows.Input;
+using AvigilonProject.BuisnessLayer.Model;
 
 namespace AvigilonProject.ViewModel
 {
     public class AvigilonIpVewModel : AvigilonProjectViewModelBase
     {
-
+        private AvigilonIpVewModelBl IpAdd;
         public AvigilonIpVewModel()
         {
             IpModel = new IpModel();
             IpModels = new ObservableCollection<IpModel>();
             SelectIpModels = new IpModel();
-            Read();
+            IpAdd =new AvigilonIpVewModelBl();
+            Read(IpAdd);
         }
         AvigilonIpVewModelBl AvigilonIpobject = new AvigilonIpVewModelBl();
         private IpModel _ipmodel;
@@ -69,9 +71,9 @@ namespace AvigilonProject.ViewModel
         }
         
         
-        public void Read()
+        public void Read(IAddIP IpAdd)
         {
-            var Ipmode = AvigilonIpobject.ReadIp();
+            var Ipmode = IpAdd.ReadIp();
             IpModels.Clear();
             foreach (var item in Ipmode)
             {
@@ -100,7 +102,7 @@ namespace AvigilonProject.ViewModel
             dialogueService= new DialogueService();
             if (dialogueService != null)
                 dialogueService.ShowIpWindow();
-            Read();
+            Read(IpAdd);
             
         }
         
@@ -134,7 +136,7 @@ namespace AvigilonProject.ViewModel
         public void Removes(object parameter)
         {
             AvigilonIpobject.RemoveIp(SelectIpModels.IP);
-            Read();
+            Read(IpAdd);
         }
         
     }

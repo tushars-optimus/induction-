@@ -7,24 +7,25 @@ using AvigilonProject.DataAccess;
 using System.Collections.ObjectModel;
 
 using AvigilonProject.BuisnessLayer.Model;
-using AvigilonProject.Model;
+
+
 
 namespace AvigilonProject.BuisnessLayer
 {
-    public class AvigilonProjecyBl
+    public class AvigilonProjecyBl : IAvigilonBl
     {
         ProjectEntities ProjectEntities = new ProjectEntities();
         /// <summary>
         /// To read values from database
         /// </summary>
         /// <returns>AvigilonModel</returns>
-        public List<Avigilons> ReadAvigilons()
+        public virtual List<AlarmSite> ReadAvigilons()
         {
             var Cameras = ProjectEntities.Avigilons.ToList();
-            var AvigilonModel = new List<Avigilons>();
+            var AvigilonModel = new List<AlarmSite>();
             foreach (var entity in Cameras)
             {
-                AvigilonModel.Add(new Avigilons
+                AvigilonModel.Add(new AlarmSite
                 {
                     Alarm = entity.Alarm,
                     Site=entity.Sites
@@ -37,7 +38,7 @@ namespace AvigilonProject.BuisnessLayer
         /// To read value from Velocity
         /// </summary>
         /// <returns>VelocityModel</returns>
-        public List<Velocity> ReadVelocity()
+        public virtual List<Velocity> ReadVelocity()
         {
             var description = ProjectEntities.Alarm_Description.ToList();
             var VelocityModel = new List<Velocity>();
@@ -68,7 +69,7 @@ namespace AvigilonProject.BuisnessLayer
         /// To read Alarm Mapping model
         /// </summary>
         /// <returns>AlarmMapping</returns>
-        public List<AlarmMappingBl> ReadAlarmMapping()
+        public virtual List<AlarmMappingBl> ReadAlarmMapping()
         {
             var alarmMaps = ProjectEntities.AlarmMappings.ToList();;
             var alarmMapppingBl = new List<AlarmMappingBl>();

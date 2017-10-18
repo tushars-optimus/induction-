@@ -33,7 +33,7 @@
 
                         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
 
-                            <DataGrid CanUserAddRows = "False" Margin="10" SelectedItem="{Binding SelectedAvigilons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            <DataGrid IsReadOnly="True" CanUserAddRows = "False" Margin="10" SelectedItem="{Binding SelectedAvigilons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                       ItemsSource="{Binding Avigilons ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False" SelectionMode="Single">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Alarm" Width="161" Binding="{ Binding Alarm}"/>
@@ -69,8 +69,8 @@
                             <Image Source="/ViewModel/Images/magnify.PNG" Height="18"/>
                         </StackPanel>
                         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                            <DataGrid CanUserAddRows = "False"  Margin="10" SelectedItem="{Binding SelectedVelocity, Mode=TwoWay}" 
-                                      ItemsSource="{Binding Velocitys ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True">
+                            <DataGrid IsReadOnly="True" CanUserAddRows = "False"  Margin="10" SelectedItem="{Binding SelectedVelocity, Mode=TwoWay}" 
+                                      ItemsSource="{Binding Velocitys ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False" SelectionMode="Single" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn  Header="Description" Width="317.6" Binding="{ Binding Description}"/>
                                 </DataGrid.Columns>
@@ -92,7 +92,7 @@
                         <Image Source="/ViewModel/Images/magnify.PNG" Height="18"/>
                     </StackPanel>
                     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                        <DataGrid CanUserAddRows = "False" Margin="10" SelectedItem="{Binding SelectedAlarmMappingModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
+                        <DataGrid IsReadOnly="True" CanUserAddRows = "False" Margin="10" SelectedItem="{Binding SelectedAlarmMappingModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
                                   ItemsSource="{Binding AlarmMappingModel ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Alarm" Width="128" Binding="{ Binding Alarm, Mode=TwoWay}"/>

@@ -10,7 +10,7 @@
         <GroupBox Focusable="True"  Padding="2" Header="Avigilon" Grid.Row="0" Margin="20,0,0,0" Name="avigilon" >
             <StackPanel>
                    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                    <DataGrid Margin="10" SelectedItem="{Binding SelectIpModels,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding IpModels ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <DataGrid IsReadOnly="True" Margin="10" SelectedItem="{Binding SelectIpModels,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding IpModels ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                VerticalAlignment="Stretch" AutoGenerateColumns="False" CanUserAddRows = "False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="IP" Width="150" Binding="{ Binding IP}"/>

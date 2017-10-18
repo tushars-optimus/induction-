@@ -14,11 +14,15 @@ namespace AvigilonProject.ViewModel
     public class AvigilonIpAddViewModel: AvigilonProjectViewModelBase
     {
         AvigilonIpVewModel AvigilonIpVewModel = new AvigilonIpVewModel();
-        AvigilonAddIp AddIpObject=new AvigilonAddIp();
-        InvalidModel InvalidModel = new InvalidModel();
+        AvigilonAddIp AddIpObject;
+        InvalidModel InvalidModel;
+        AvigilonIpVewModelBl IpAdd;
         public AvigilonIpAddViewModel()
         {
+            AddIpObject = new AvigilonAddIp();
+            InvalidModel = new InvalidModel();
             IPs = new IpAddModel();
+            IpAdd = new AvigilonIpVewModelBl();
             AddIpObject.OperationInvalid += InvalidShow;
         }
         static void InvalidShow(object sender, EventArgs e)
@@ -67,7 +71,7 @@ namespace AvigilonProject.ViewModel
             dialogueService = new DialogueService();
             AddIpObject.Save(IPs.IP); 
             IPs.IP = string.Empty;
-            AvigilonIpVewModel.Read();
+            AvigilonIpVewModel.Read(IpAdd);
             
             if (dialogueService != null)
                 dialogueService.CloseIpWindow();

@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using AvigilonProject.BuisnessLayer;
 using System.Windows.Input;
 using AvigilonProject.Model.Commands;
+using AvigilonProject.BuisnessLayer.Model;
 
 namespace AvigilonProject.ViewModel
 {
@@ -92,7 +93,7 @@ namespace AvigilonProject.ViewModel
             }
         }
 
-        AvigilonProjecyBl Blobject = new AvigilonProjecyBl();
+        //AvigilonProjecyBl Blobject = new AvigilonProjecyBl();
         
         public AvigilonProjectViewModel()
         {
@@ -101,24 +102,25 @@ namespace AvigilonProject.ViewModel
             Avigilon = new AvigilonModel();
             Velocity = new VelocityModel();
             Avigilons = new ObservableCollection<AvigilonModel>();
-
             Velocitys = new ObservableCollection<VelocityModel>();
             AlarmMappingModel = new ObservableCollection<AlarmMappingModel>();
             SelectedAvigilons = new AvigilonModel();
             SelectedVelocity = new VelocityModel();
             SelectedAlarmMappingModel = new AlarmMappingModel();
-            AvigilonReadOnly();
-            VelocityReadOnly();
-            AlarmMappingVm();
+            AvigilonBl = new AvigilonProjecyBl();
+            AlarmReadOnly(AvigilonBl);
+            VelocityReadOnly(AvigilonBl);
+            AlarmMappingVm(AvigilonBl);
 
         }
+        private IAvigilonBl AvigilonBl;
         private ObservableCollection<AvigilonModel> _avigilonInstance;
         /// <summary>
         /// TO store value from bl to Avigilons list 
         /// </summary>
-        public void AvigilonReadOnly()
+        public void AlarmReadOnly(IAvigilonBl AvigilonBl)
         {
-            var Avi = Blobject.ReadAvigilons();
+            var Avi = AvigilonBl.ReadAvigilons();
             Avigilons.Clear();
             foreach (var item in Avi)
             {
@@ -131,9 +133,10 @@ namespace AvigilonProject.ViewModel
         /// <summary>
         /// TO store value from bl to Velocity list 
         /// </summary>
-        public void VelocityReadOnly()
+        
+        public void VelocityReadOnly(IAvigilonBl AvigilonBl)
         {
-            var Vel = Blobject.ReadVelocity();
+            var Vel = AvigilonBl.ReadVelocity();
             Velocitys.Clear();
             foreach (var item in Vel)
             {
@@ -146,9 +149,9 @@ namespace AvigilonProject.ViewModel
         /// <summary>
         /// TO store value in Alarm Mapping 
         /// </summary>
-        public void AlarmMappingVm()
+        public void AlarmMappingVm(IAvigilonBl AvigilonBl)
         {
-            var Alarmm = Blobject.ReadAlarmMapping();
+            var Alarmm = AvigilonBl.ReadAlarmMapping();
             AlarmMappingModel.Clear();
             foreach (var item in Alarmm)
             {
@@ -223,16 +226,29 @@ namespace AvigilonProject.ViewModel
         }
         public bool CanSubmitExecutes(object parameter)
         {
-            if (string.IsNullOrEmpty(SelectedAvigilons.Alarm) || string.IsNullOrEmpty(SelectedVelocity.Description))
-                return false;
+            if (SelectedAvigilons == null)
+            {
+                SelectedAvigilons = new AvigilonModel();
+                return CanSubmitExecutes(parameter);
+            }
+            else if (SelectedVelocity == null)
+            {
+                SelectedVelocity = new VelocityModel();
+                return CanSubmitExecutes(parameter);
+            }
             else
-                return true;
+            {
+                if (string.IsNullOrEmpty(SelectedAvigilons.Alarm) || string.IsNullOrEmpty(SelectedVelocity.Description))
+                    return false;
+                else
+                    return true;
+            }
         }
 
         public void Select(object parameter)
         {
-            Blobject.Selects(SelectedAvigilons.Alarm, SelectedAvigilons.Site, SelectedVelocity.Description);
-            AlarmMappingVm();
+            AvigilonBl.Selects(SelectedAvigilons.Alarm, SelectedAvigilons.Site, SelectedVelocity.Description);
+            AlarmMappingVm(AvigilonBl);
         }
         
         /// <summary>
@@ -249,17 +265,29 @@ namespace AvigilonProject.ViewModel
         }
         public bool CanSubmitExecuted(object parameter)
         {
-           
-            if (string.IsNullOrEmpty(SelectedAlarmMappingModel.Alarm))
-                return false;
+            if (SelectedAlarmMappingModel == null)
+            {
+                SelectedAlarmMappingModel = new AlarmMappingModel();
+                return CanSubmitExecuted(parameter);
+            }
             else
-                return true;
+            {
+                if (string.IsNullOrEmpty(SelectedAlarmMappingModel.Alarm))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            
         }
 
         public void Deselect(object parameter)
         {
-            Blobject.Deletes(SelectedAlarmMappingModel.Alarm, SelectedAlarmMappingModel.Description);
-            AlarmMappingVm();
+            AvigilonBl.Deletes(SelectedAlarmMappingModel.Alarm, SelectedAlarmMappingModel.Description);
+            AlarmMappingVm(AvigilonBl);
             SelectedAlarmMappingModel = new AlarmMappingModel();
 
 
@@ -288,7 +316,7 @@ namespace AvigilonProject.ViewModel
             if (String.IsNullOrEmpty(SearchAvigilon))
             {
 
-                AvigilonReadOnly();
+                AlarmReadOnly(AvigilonBl);
             }
             else
             {
@@ -326,7 +354,7 @@ namespace AvigilonProject.ViewModel
             if (String.IsNullOrEmpty(SearchVelocity))
             {
 
-                VelocityReadOnly();
+                VelocityReadOnly(AvigilonBl); 
             }
             else
             {
@@ -364,7 +392,7 @@ namespace AvigilonProject.ViewModel
             if (String.IsNullOrEmpty(SearchMap))
             {
 
-                AlarmMappingVm();
+                AlarmMappingVm(AvigilonBl);
             }
             else
             {

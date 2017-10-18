@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using AvigilonProject.DataAccess;
 using AvigilonProject.BuisnessLayer.Model;
-using AvigilonProject.Model;
+
 using System.Collections.ObjectModel;
 
 namespace AvigilonProject.BuisnessLayer
 {
-    public class AvigilonIpVewModelBl
+    public class AvigilonIpVewModelBl : IAddIP
     {
         public AvigilonIpVewModelBl()
         {
@@ -52,7 +52,7 @@ namespace AvigilonProject.BuisnessLayer
         /// To read Ip value from database
         /// </summary>
         /// <returns> </returns>
-        public List<IpModelBl> ReadIp()
+        public virtual List<IpModelBl> ReadIp()
         {
             var description = ProjectEntities.Avigilon2.ToList();
             var IpModel = new List<IpModelBl>();

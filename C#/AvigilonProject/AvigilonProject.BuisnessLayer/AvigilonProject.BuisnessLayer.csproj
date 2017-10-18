@@ -53,9 +53,11 @@
   <ItemGroup>
     <Compile Include="AvigilonAddIp.cs" />
     <Compile Include="Invalid.cs" />
-    <Compile Include="Model\AlarmMapping.cs" />
+    <Compile Include="Model\AlarmMappingBl.cs" />
     <Compile Include="AvigilonIpVewModelBl.cs" />
-    <Compile Include="Model\Avigilons.cs" />
+    <Compile Include="Model\AlarmSite.cs" />
+    <Compile Include="Model\IAddIP.cs" />
+    <Compile Include="Model\IAvigilonBl.cs" />
     <Compile Include="Model\IpAddModelBl.cs" />
     <Compile Include="Model\IpModelB.cs" />
     <Compile Include="Model\Velocity.cs" />
