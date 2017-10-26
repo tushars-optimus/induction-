@@ -7,10 +7,13 @@ using AvigilonProject.Model;
 using System.Collections.ObjectModel;
 using AvigilonProject.BuisnessLayer;
 using System.Windows.Input;
-using AvigilonProject.Model.Commands;
-using AvigilonProject.BuisnessLayer.Model;
 
-namespace AvigilonProject.ViewModel
+using AvigilonProject.BuisnessLayer.Model;
+using AvigilonProject.UI.Model;
+using AvigilonProject.BuisnessLayer.Service;
+using AvigilonProject.UI.Commands;
+
+namespace AvigilonProject.UI.ViewModel
 {
     public class AvigilonProjectViewModel : AvigilonProjectViewModelBase
     {
@@ -113,12 +116,12 @@ namespace AvigilonProject.ViewModel
             AlarmMappingVm(AvigilonBl);
 
         }
-        private IAvigilonBl AvigilonBl;
+        private IAvigilon AvigilonBl;
         private ObservableCollection<AvigilonModel> _avigilonInstance;
         /// <summary>
         /// TO store value from bl to Avigilons list 
         /// </summary>
-        public void AlarmReadOnly(IAvigilonBl AvigilonBl)
+        public void AlarmReadOnly(IAvigilon AvigilonBl)
         {
             var Avi = AvigilonBl.ReadAvigilons();
             Avigilons.Clear();
@@ -134,28 +137,34 @@ namespace AvigilonProject.ViewModel
         /// TO store value from bl to Velocity list 
         /// </summary>
         
-        public void VelocityReadOnly(IAvigilonBl AvigilonBl)
+        public void VelocityReadOnly(IAvigilon AvigilonBl)
         {
-            var Vel = AvigilonBl.ReadVelocity();
-            Velocitys.Clear();
-            foreach (var item in Vel)
+            try          
             {
-                Velocitys.Add(new VelocityModel { Description = item.Description });
+                var Vel = AvigilonBl.ReadVelocity();
+                Velocitys.Clear();
+                foreach (var item in Vel)
+                {
+                    Velocitys.Add(new VelocityModel { Description = item.Description });
+                }
+                _velocityInstance = new ObservableCollection<VelocityModel>(Velocitys);
             }
-            _velocityInstance = new ObservableCollection<VelocityModel>(Velocitys);
-
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
         }
         private ObservableCollection<AlarmMappingModel> Mapping;
         /// <summary>
         /// TO store value in Alarm Mapping 
         /// </summary>
-        public void AlarmMappingVm(IAvigilonBl AvigilonBl)
+        public void AlarmMappingVm(IAvigilon AvigilonBl)
         {
             var Alarmm = AvigilonBl.ReadAlarmMapping();
             AlarmMappingModel.Clear();
             foreach (var item in Alarmm)
             {
-                AlarmMappingModel.Add(new AlarmMappingModel { Alarm = item.AlarmBl, Site = item.SiteBl, Description = item.DescriptionBl });
+                AlarmMappingModel.Add(new AlarmMappingModel { Alarm = item.Alarm, Site = item.Site, Description = item.Description });
             }
             Mapping = new ObservableCollection<AlarmMappingModel>(AlarmMappingModel);
         }
@@ -220,7 +229,7 @@ namespace AvigilonProject.ViewModel
             get
             {
 
-                return new RelayCommand(Select, CanSubmitExecutes);
+                return new RelayCommand(AlarmVelocitySelect, CanSubmitExecutes);
             }
 
         }
@@ -245,7 +254,7 @@ namespace AvigilonProject.ViewModel
             }
         }
 
-        public void Select(object parameter)
+        public void AlarmVelocitySelect(object parameter)
         {
             AvigilonBl.Selects(SelectedAvigilons.Alarm, SelectedAvigilons.Site, SelectedVelocity.Description);
             AlarmMappingVm(AvigilonBl);
@@ -259,7 +268,7 @@ namespace AvigilonProject.ViewModel
             get
             {
 
-                return new RelayCommand(Deselect, CanSubmitExecuted);
+                return new RelayCommand(AlarmVelocityDeselect, CanSubmitExecuted);
             }
 
         }
@@ -284,7 +293,7 @@ namespace AvigilonProject.ViewModel
             
         }
 
-        public void Deselect(object parameter)
+        public void AlarmVelocityDeselect(object parameter)
         {
             AvigilonBl.Deletes(SelectedAlarmMappingModel.Alarm, SelectedAlarmMappingModel.Description);
             AlarmMappingVm(AvigilonBl);

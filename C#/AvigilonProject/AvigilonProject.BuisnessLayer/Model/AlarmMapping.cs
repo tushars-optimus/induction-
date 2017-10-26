@@ -1,34 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace AvigilonProject.BuisnessLayer.Model
 {
-    public class AlarmMappingBl
+    public class AvigilonMapping
     {
+        #region Private Variables
         private string _alarm;
+        private string _site;
+        private string _description;
+        #endregion
 
-        public string AlarmBl
+        #region Public Variables
+        
+        public string Alarm
         {
             get { return _alarm; }
             set { _alarm = value; }
         }
 
-        private string _site;
-
-        public string SiteBl
+        public string Site
         {
             get { return _site; }
             set { _site = value; }
         }
-        private string _description;
 
-        public string DescriptionBl
+
+        public string Description
         {
             get { return _description; }
             set { _description = value; }
         }
+        #endregion
+
     }
 }

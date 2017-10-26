@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace AvigilonProject.Model.Commands
+namespace AvigilonProject.UI.Commands
 {
     /// <summary>
     /// To bind button to different action

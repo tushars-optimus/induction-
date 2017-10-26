@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AvigilonProject.BuisnessLayer.Model;
 using AvigilonProject.DataAccess;
 
-namespace AvigilonProject.BuisnessLayer
+namespace AvigilonProject.BuisnessLayer.Service
 {
     public class AvigilonAddIp
     {
         const string status = "Ready";
         const string Versions = "6.0.0.24";
         public EventHandler OperationInvalid;
-        ProjectEntities projectenties = new ProjectEntities();
+        ProjectEntities _projectenties = new ProjectEntities();
         /// <summary>
         /// To save new IP address in Database
         /// </summary>
@@ -47,12 +43,12 @@ namespace AvigilonProject.BuisnessLayer
             if (flag == 1)
             {
                 var entities = new Avigilon2 { IP = ip, Status = status, Version = Versions };
-                var existingIp = projectenties.Avigilon2.Where(p => p.IP == ip).ToList();
+                var existingIp = _projectenties.Avigilon2.Where(p => p.IP == ip).ToList();
                 if (existingIp.Count==0)
                 {
 
-                    projectenties.Avigilon2.Add(entities);
-                    projectenties.SaveChanges();
+                    _projectenties.Avigilon2.Add(entities);
+                    _projectenties.SaveChanges();
                 }
             }
         }

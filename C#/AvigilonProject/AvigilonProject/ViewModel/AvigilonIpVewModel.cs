@@ -1,25 +1,27 @@
 ﻿using AvigilonProject.BuisnessLayer;
-using AvigilonProject.Model.Commands;
 using AvigilonProject.Model;
 using System.Collections.ObjectModel;
-
 using System.Windows.Input;
 using AvigilonProject.BuisnessLayer.Model;
+using AvigilonProject.BuisnessLayer.Service;
+using AvigilonProject.UI.Model;
+using AvigilonProject.UI.Commands;
+using AvigilonProject.UI.Dialogue;
 
-namespace AvigilonProject.ViewModel
+namespace AvigilonProject.UI.ViewModel
 {
     public class AvigilonIpVewModel : AvigilonProjectViewModelBase
     {
-        private AvigilonIpVewModelBl IpAdd;
+        private AvigilonIpVewModels IpAdd;
         public AvigilonIpVewModel()
         {
             IpModel = new IpModel();
             IpModels = new ObservableCollection<IpModel>();
             SelectIpModels = new IpModel();
-            IpAdd =new AvigilonIpVewModelBl();
+            IpAdd =new AvigilonIpVewModels();
             Read(IpAdd);
         }
-        AvigilonIpVewModelBl AvigilonIpobject = new AvigilonIpVewModelBl();
+        AvigilonIpVewModels AvigilonIpobject = new AvigilonIpVewModels();
         private IpModel _ipmodel;
         /// <summary>
         /// To access IpModel  

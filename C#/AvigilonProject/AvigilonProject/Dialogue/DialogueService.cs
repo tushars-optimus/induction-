@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AvigilonProject.ViewModel
+namespace AvigilonProject.UI.Dialogue
 {
     /// <summary>
     /// To show dialog box for adding Ip

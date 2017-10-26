@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AvigilonProject.Model
+namespace AvigilonProject.UI.Model
 {
     public class AvigilonModel
     {
+        #region Private Region
         private string _alarm;
-
+        private string _site;
+        #endregion
         public string Alarm
         {
             get { return _alarm; }
             set { _alarm = value; }
         }
-
-        private string _site;
 
         public string Site
         {

@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AvigilonProject.DataAccess;
-using System.Collections.ObjectModel;
-
 using AvigilonProject.BuisnessLayer.Model;
-
-
+using AvigilonProject.BuisnessLayer.Service;
 
 namespace AvigilonProject.BuisnessLayer
 {
-    public class AvigilonProjecyBl : IAvigilonBl
+    public class AvigilonProjecyBl : IAvigilon
     {
-        ProjectEntities ProjectEntities = new ProjectEntities();
+        //TODO: add access specifier, naming convention
+        ProjectEntities _projectentities = new ProjectEntities();
         /// <summary>
         /// To read values from database
         /// </summary>
         /// <returns>AvigilonModel</returns>
         public virtual List<AlarmSite> ReadAvigilons()
         {
-            var Cameras = ProjectEntities.Avigilons.ToList();
+            //todo
+            var Cameras = _projectentities.Avigilons.ToList();
             var AvigilonModel = new List<AlarmSite>();
             foreach (var entity in Cameras)
             {
@@ -40,7 +36,7 @@ namespace AvigilonProject.BuisnessLayer
         /// <returns>VelocityModel</returns>
         public virtual List<Velocity> ReadVelocity()
         {
-            var description = ProjectEntities.Alarm_Description.ToList();
+            var description = _projectentities.Alarm_Description.ToList();
             var VelocityModel = new List<Velocity>();
             foreach (var entity in description)
             {
@@ -60,26 +56,25 @@ namespace AvigilonProject.BuisnessLayer
         /// <param name="descriptioin"></param>
         public void Selects(string alarm,string site,string descriptioin)
         {
-
             var projectentities = new AlarmMapping { Alarm = alarm, Sites = site, Descriptions = descriptioin };
-            ProjectEntities.AlarmMappings.Add(projectentities);
-            ProjectEntities.SaveChanges();
+            _projectentities.AlarmMappings.Add(projectentities);
+            _projectentities.SaveChanges();
         }
         /// <summary>
         /// To read Alarm Mapping model
         /// </summary>
         /// <returns>AlarmMapping</returns>
-        public virtual List<AlarmMappingBl> ReadAlarmMapping()
+        public virtual List<AvigilonMapping> ReadAlarmMapping()
         {
-            var alarmMaps = ProjectEntities.AlarmMappings.ToList();;
-            var alarmMapppingBl = new List<AlarmMappingBl>();
+            var alarmMaps = _projectentities.AlarmMappings.ToList();;
+            var alarmMapppingBl = new List<AvigilonMapping>();
             foreach (var entity in alarmMaps)
             {
-                alarmMapppingBl.Add(new AlarmMappingBl
+                alarmMapppingBl.Add(new AvigilonMapping
                 {
-                    AlarmBl=entity.Alarm,
-                    SiteBl = entity.Sites,
-                    DescriptionBl = entity.Descriptions
+                    Alarm=entity.Alarm,
+                    Site = entity.Sites,
+                    Description = entity.Descriptions
                 });
             }
 
@@ -94,9 +89,9 @@ namespace AvigilonProject.BuisnessLayer
         public void Deletes(string alarm, string descriptioin)
         {
 
-            var del = ProjectEntities.AlarmMappings.Where(x => x.Alarm == alarm && x.Descriptions==descriptioin).First();
-            ProjectEntities.AlarmMappings.Remove(del);
-            ProjectEntities.SaveChanges();
+            var del = _projectentities.AlarmMappings.Where(x => x.Alarm == alarm && x.Descriptions==descriptioin).First();
+            _projectentities.AlarmMappings.Remove(del);
+            _projectentities.SaveChanges();
         }
     }
 }

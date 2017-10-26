@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AvigilonProject.ViewModel
+namespace AvigilonProject.UI.ViewModel
 {
     /// <summary>
     /// TO implement Inotification Property

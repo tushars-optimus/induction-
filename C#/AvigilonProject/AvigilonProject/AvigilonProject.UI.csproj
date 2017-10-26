@@ -65,14 +65,14 @@
     <Compile Include="Model\IpAddModel.cs" />
     <Compile Include="ViewModel\AvigilonIpAddViewModel.cs" />
     <Compile Include="ViewModel\AvigilonIpVewModel.cs" />
-    <Compile Include="ViewModel\Commands\RelayCommands.cs" />
+    <Compile Include="Commands\RelayCommands.cs" />
     <Compile Include="Model\IpModel.cs" />
     <Compile Include="Model\VelocityModel.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\AvigilonProjectViewModel.cs" />
     <Compile Include="ViewModel\AvigilonProjectViewModelBase.cs" />
     <Compile Include="Model\AlarmMappingModel.cs" />
-    <Compile Include="ViewModel\DialogueService.cs" />
+    <Compile Include="Dialogue\DialogueService.cs" />
     <Compile Include="View\ConnectionView.xaml.cs">
       <DependentUpon>ConnectionView.xaml</DependentUpon>
     </Compile>
@@ -142,7 +142,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ViewModel\Images\magnify.PNG" />
+    <Resource Include="Images\magnify.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

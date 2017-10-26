@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AvigilonProject.ViewModel;
+
 using Moq;
 
 using AvigilonProject.BuisnessLayer;
 using AvigilonProject.BuisnessLayer.Model;
+using AvigilonProject.UI.ViewModel;
 
 namespace AvigilonProjectTestCase.UILayer
 {
@@ -30,10 +31,10 @@ namespace AvigilonProjectTestCase.UILayer
                 new AlarmSite(){Alarm="Gallagar",Site="Acc 1.3"},
                 new AlarmSite(){Alarm="Gallagar2",Site="Acc 1.241"}
             };
-            var Mappings = new List<AlarmMappingBl>()
+            var Mappings = new List<AvigilonMapping>()
             {
-                new AlarmMappingBl(){AlarmBl="Gallagar", SiteBl="Acc 1.3",DescriptionBl="Network mode"},
-                new AlarmMappingBl(){AlarmBl="Gallagar2", SiteBl="Acc 1.7",DescriptionBl="Controller mode"}
+                new AvigilonMapping(){Alarm="Gallagar", Site="Acc 1.3",Description="Network mode"},
+                new AvigilonMapping(){Alarm="Gallagar2", Site="Acc 1.7",Description="Controller mode"}
             };
             var AvigilonMock = new Mock<AvigilonProjecyBl>();
             AvigilonMock.Setup(r => r.ReadVelocity()).Returns(Velocitys);
@@ -44,6 +45,7 @@ namespace AvigilonProjectTestCase.UILayer
 
             
         }
+
         [TestMethod]
         public void Velocitys_ReadVelovity_IsPopulated()
         {
@@ -60,6 +62,15 @@ namespace AvigilonProjectTestCase.UILayer
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),"Null value")]
+        public void Velocitys_ReadVelovity_IsNull()
+        {
+            //Arrange
+            var AvigilonProjectViewModel = new AvigilonProjectViewModel();
+            AvigilonProjectViewModel.VelocityReadOnly(null);
+        }
+       
+        [TestMethod]
         public void Alarms_ReadAlarms_IsPopulated()
         {
             //Arrange
@@ -73,6 +84,16 @@ namespace AvigilonProjectTestCase.UILayer
             Assert.IsNotNull(AvigilonProjectViewModel.Avigilons);
             Assert.AreEqual(AvigilonProjectViewModel.Avigilons.Count(), 2);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException), "Null value")]
+        public void Alarms_ReadAlarms_IsNull()
+        {
+            //Arrange
+            var AvigilonProjectViewModel = new AvigilonProjectViewModel();
+            AvigilonProjectViewModel.AlarmReadOnly(null);
+        }
+
         [TestMethod]
         public void AlarmMapping_ReadOnly_IsPopulated()
         {
@@ -87,17 +108,13 @@ namespace AvigilonProjectTestCase.UILayer
             Assert.AreEqual(AvigilonProjectViewModel.AlarmMappingModel.Count(), 2);
 
         }
-        //[TestMethod]
-        //public void Select_CreateCommand_ExpectedResult()
-        //{
-        //    //Arrange
-            
-
-        //    //Act
-
-
-        //    //Assert
-
-        //}
-}
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException), "Null value")]
+        public void AlarmMapping_ReadOnly_IsNull()
+        {
+            //Arrange
+            var AvigilonProjectViewModel = new AvigilonProjectViewModel();
+            AvigilonProjectViewModel.AlarmMappingVm(null);
+        }
+        }
 }

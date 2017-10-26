@@ -51,14 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AvigilonAddIp.cs" />
+    <Compile Include="Service\AvigilonAddIp.cs" />
     <Compile Include="Invalid.cs" />
-    <Compile Include="Model\AlarmMappingBl.cs" />
-    <Compile Include="AvigilonIpVewModelBl.cs" />
+    <Compile Include="Model\AlarmMapping.cs" />
+    <Compile Include="Service\AvigilonIpVewModels.cs" />
     <Compile Include="Model\AlarmSite.cs" />
-    <Compile Include="Model\IAddIP.cs" />
-    <Compile Include="Model\IAvigilonBl.cs" />
-    <Compile Include="Model\IpAddModelBl.cs" />
+    <Compile Include="Service\IAddIP.cs" />
+    <Compile Include="Service\IAvigilon.cs" />
     <Compile Include="Model\IpModelB.cs" />
     <Compile Include="Model\Velocity.cs" />
     <Compile Include="AvigilonProjecyBl.cs" />
@@ -67,9 +66,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AvigilonProject.DataAccess\AvigilonProject.DataAccess.csproj">

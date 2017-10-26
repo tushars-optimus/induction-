@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 using AvigilonProject.Model;
 using System.Windows.Input;
 using AvigilonProject.BuisnessLayer;
-using AvigilonProject.Model.Commands;
 using AvigilonProject.View;
+using AvigilonProject.BuisnessLayer.Service;
+using AvigilonProject.UI.Model;
+using AvigilonProject.UI.Commands;
+using AvigilonProject.UI.Dialogue;
 
-namespace AvigilonProject.ViewModel
+namespace AvigilonProject.UI.ViewModel
 {
     public class AvigilonIpAddViewModel: AvigilonProjectViewModelBase
     {
-        AvigilonIpVewModel AvigilonIpVewModel = new AvigilonIpVewModel();
+        AvigilonIpVewModel _avigilonipvewmodel = new AvigilonIpVewModel();
         AvigilonAddIp AddIpObject;
         InvalidModel InvalidModel;
-        AvigilonIpVewModelBl IpAdd;
+        AvigilonIpVewModels IpAdd;
         public AvigilonIpAddViewModel()
         {
             AddIpObject = new AvigilonAddIp();
             InvalidModel = new InvalidModel();
             IPs = new IpAddModel();
-            IpAdd = new AvigilonIpVewModelBl();
+            IpAdd = new AvigilonIpVewModels();
             AddIpObject.OperationInvalid += InvalidShow;
         }
         static void InvalidShow(object sender, EventArgs e)
@@ -33,17 +36,17 @@ namespace AvigilonProject.ViewModel
         /// <summary>
         /// To add Ip in Ip Model
         /// </summary>
-        private IpAddModel _IPs;
+        private IpAddModel _ips;
 
         public IpAddModel IPs
         {
             get 
             {
-                return _IPs;
+                return _ips;
             }
             set
             {
-                _IPs = value;
+                _ips = value;
                 OnPropertyChanged("IPs");
             }
         }
@@ -71,7 +74,7 @@ namespace AvigilonProject.ViewModel
             dialogueService = new DialogueService();
             AddIpObject.Save(IPs.IP); 
             IPs.IP = string.Empty;
-            AvigilonIpVewModel.Read(IpAdd);
+            _avigilonipvewmodel.Read(IpAdd);
             
             if (dialogueService != null)
                 dialogueService.CloseIpWindow();

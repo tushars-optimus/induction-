@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AvigilonProject.DataAccess;
 using AvigilonProject.BuisnessLayer.Model;
 
 using System.Collections.ObjectModel;
 
-namespace AvigilonProject.BuisnessLayer
+namespace AvigilonProject.BuisnessLayer.Service
 {
-    public class AvigilonIpVewModelBl : IAddIP
+    public class AvigilonIpVewModels : IAddIP
     {
-        public AvigilonIpVewModelBl()
+        public AvigilonIpVewModels()
         {
             IpModel = new IpModelBl();
             IpModels = new ObservableCollection<IpModelBl>();
         }
-        ProjectEntities ProjectEntities = new ProjectEntities();
+        ProjectEntities _projectentities = new ProjectEntities();
         private IpModelBl _ipmodel;
         /// <summary>
         /// To interact with IpModelB 
@@ -54,9 +51,9 @@ namespace AvigilonProject.BuisnessLayer
         /// <returns> </returns>
         public virtual List<IpModelBl> ReadIp()
         {
-            var description = ProjectEntities.Avigilon2.ToList();
+            var ipdescription = _projectentities.Avigilon2.ToList();
             var IpModel = new List<IpModelBl>();
-            foreach (var entity in description)
+            foreach (var entity in ipdescription)
             {
                 IpModel.Add(new IpModelBl
                 {
@@ -74,9 +71,10 @@ namespace AvigilonProject.BuisnessLayer
         /// <param name="ips"></param>
         public void RemoveIp(string ips)
         {
-            var selecteditem = ProjectEntities.Avigilon2.Where(x => x.IP == ips).First();
-            ProjectEntities.Avigilon2.Remove(selecteditem);
-            ProjectEntities.SaveChanges();
+            var selecteditem = _projectentities.Avigilon2.Where(x => x.IP == ips).FirstOrDefault();
+            //Todo
+            _projectentities.Avigilon2.Remove(selecteditem);
+            _projectentities.SaveChanges();
         }
     }
 }
