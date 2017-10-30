@@ -33,6 +33,7 @@ namespace enumerator
             return personarray.GetEnumerator();
         }
     }
+    //
     class Program
     {
         static void Main(string[] args)
