@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace enumerator
 {
-    class players
+    class Player
     {
         public string name { get; set; }
         public int age { get; set; }
-        public players(string n1,int ag)
+        public Player(string n1,int ag)
         {
             name = n1;
             age = ag;
@@ -20,12 +20,12 @@ namespace enumerator
     }
     class team:IEnumerable
     {
-        private players[] personarray = new players[3];
+        private Player[] personarray = new Player[3];
         public team ()
 	{
-        personarray[0] = new players ( "virat", 30 );
-        personarray[1] = new players ( "dhoni", 29 );
-        personarray[2] = new players ( "Sachin", 38 );
+        personarray[0] = new Player ( "virat", 30 );
+        personarray[1] = new Player ( "dhoni", 29 );
+        personarray[2] = new Player ( "Sachin", 38 );
 	}
 
         public IEnumerator GetEnumerator()
@@ -40,7 +40,7 @@ namespace enumerator
         {
             team obj = new team();
           
-          foreach (players player in obj)
+          foreach (Player player in obj)
           {
               Console.WriteLine(player.name+" "+player.age);
           }
