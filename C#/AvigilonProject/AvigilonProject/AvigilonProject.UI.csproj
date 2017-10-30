@@ -73,6 +73,7 @@
     <Compile Include="ViewModel\AvigilonProjectViewModelBase.cs" />
     <Compile Include="Model\AlarmMappingModel.cs" />
     <Compile Include="Dialogue\DialogueService.cs" />
+    <Compile Include="ViewModel\FakeAvigilonViewModel.cs" />
     <Compile Include="View\ConnectionView.xaml.cs">
       <DependentUpon>ConnectionView.xaml</DependentUpon>
     </Compile>

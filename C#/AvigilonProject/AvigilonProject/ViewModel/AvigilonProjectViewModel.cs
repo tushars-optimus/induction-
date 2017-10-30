@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AvigilonProject.Model;
 using System.Collections.ObjectModel;
 using AvigilonProject.BuisnessLayer;
 using System.Windows.Input;
-
-using AvigilonProject.BuisnessLayer.Model;
 using AvigilonProject.UI.Model;
 using AvigilonProject.BuisnessLayer.Service;
 using AvigilonProject.UI.Commands;
@@ -298,8 +293,6 @@ namespace AvigilonProject.UI.ViewModel
             AvigilonBl.Deletes(SelectedAlarmMappingModel.Alarm, SelectedAlarmMappingModel.Description);
             AlarmMappingVm(AvigilonBl);
             SelectedAlarmMappingModel = new AlarmMappingModel();
-
-
         }
         
         private string _searchavigilon;

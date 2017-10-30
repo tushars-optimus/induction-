@@ -10,6 +10,8 @@ using Moq;
 using AvigilonProject.BuisnessLayer;
 using AvigilonProject.BuisnessLayer.Model;
 using AvigilonProject.UI.ViewModel;
+using AvigilonProject.BuisnessLayer.Service;
+using AvigilonProject.ViewModel;
 
 namespace AvigilonProjectTestCase.UILayer
 {
@@ -17,6 +19,7 @@ namespace AvigilonProjectTestCase.UILayer
     public class AvigilonProject
     {
         AvigilonProjecyBl _repository;
+        private IAvigilon _iavigilon;
         [TestInitialize]
         public void Setup()
         {
@@ -42,7 +45,7 @@ namespace AvigilonProjectTestCase.UILayer
             AvigilonMock.Setup(m => m.ReadAlarmMapping()).Returns(Mappings);
             
             _repository = AvigilonMock.Object;
-
+            _iavigilon=new FakeAvigilonViewModel();
             
         }
 
@@ -108,13 +111,68 @@ namespace AvigilonProjectTestCase.UILayer
             Assert.AreEqual(AvigilonProjectViewModel.AlarmMappingModel.Count(), 2);
 
         }
+
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException), "Null value")]
         public void AlarmMapping_ReadOnly_IsNull()
         {
             //Arrange
             var AvigilonProjectViewModel = new AvigilonProjectViewModel();
+            
+            //Act
             AvigilonProjectViewModel.AlarmMappingVm(null);
+        }
+
+        [TestMethod]
+        public void AlarmVelocitySelect_CommandButton_IsPopulated()
+        {
+            //Arrange
+            var FakeAvigilonViewModel = new FakeAvigilonViewModel();
+            //Act
+            
+            FakeAvigilonViewModel.Selects("Gallagar", "Acc 1.3", "% Network control");
+            
+             //Assert
+            Assert.IsTrue(FakeAvigilonViewModel.Flags);
+        }
+
+        [TestMethod]
+        public void AlarmVelocitySelect_CommandButton_IsNull()
+        {
+            //Arrange
+            var FakeAvigilonViewModel = new FakeAvigilonViewModel();
+
+            //Act
+                    
+                FakeAvigilonViewModel.Selects(null, null, null);
+            //Assert
+                Assert.IsNotNull(FakeAvigilonViewModel);
+        }
+
+        [TestMethod]
+        public void AlarmVelocityDeselect_CommandButton_IsPopulated()
+        {
+            //Arrange
+            var FakeAvigilonViewModel = new FakeAvigilonViewModel();
+            //Act
+
+            FakeAvigilonViewModel.Deletes("Gallagar", "% Network control");
+
+            //Assert
+            Assert.IsTrue(FakeAvigilonViewModel.Flagd);
+        }
+
+        [TestMethod]
+        public void AlarmVelocityDeselect_CommandButton_IsNull()
+        {
+            //Arrange
+            var FakeAvigilonViewModel = new FakeAvigilonViewModel();
+
+            //Act
+
+            FakeAvigilonViewModel.Deletes(null, null);
+            //Assert
+            Assert.IsNotNull(FakeAvigilonViewModel);
         }
         }
 }
