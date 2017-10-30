@@ -73,6 +73,7 @@ namespace AvigilonProjectTestCase.UILayer
             AvigilonProjectViewModel.VelocityReadOnly(null);
         }
        
+
         [TestMethod]
         public void Alarms_ReadAlarms_IsPopulated()
         {
