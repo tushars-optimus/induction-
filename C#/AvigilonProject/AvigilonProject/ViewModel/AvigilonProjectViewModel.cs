@@ -136,9 +136,9 @@ namespace AvigilonProject.UI.ViewModel
         {
             try          
             {
-                var Vel = AvigilonBl.ReadVelocity();
+                var vel = AvigilonBl.ReadVelocity();
                 Velocitys.Clear();
-                foreach (var item in Vel)
+                foreach (var item in vel)
                 {
                     Velocitys.Add(new VelocityModel { Description = item.Description });
                 }
@@ -155,15 +155,15 @@ namespace AvigilonProject.UI.ViewModel
         /// </summary>
         public void AlarmMappingVm(IAvigilon AvigilonBl)
         {
-            var Alarmm = AvigilonBl.ReadAlarmMapping();
+            var alarm = AvigilonBl.ReadAlarmMapping();
             AlarmMappingModel.Clear();
-            foreach (var item in Alarmm)
+            foreach (var item in alarm)
             {
                 AlarmMappingModel.Add(new AlarmMappingModel { Alarm = item.Alarm, Site = item.Site, Description = item.Description });
             }
             Mapping = new ObservableCollection<AlarmMappingModel>(AlarmMappingModel);
         }
-        private AvigilonModel _selectesavigilon;
+        private AvigilonModel _selectesAvigilon;
         /// <summary>
         /// To create binding for selected item for Avigilon
         /// </summary>
@@ -171,16 +171,16 @@ namespace AvigilonProject.UI.ViewModel
         {
             get
             {
-                return _selectesavigilon;
+                return _selectesAvigilon;
             }
             set
             {
-                _selectesavigilon = value;
+                _selectesAvigilon = value;
                 _selectedAlarm = new AlarmMappingModel();
                 OnPropertyChanged("SelectedAvigilons");
             }
         }
-        private VelocityModel _selectedvelocity;
+        private VelocityModel _selectedVelocity;
         /// <summary>
         /// To create binding for selected item for Velocity
         /// </summary>
@@ -189,11 +189,11 @@ namespace AvigilonProject.UI.ViewModel
         {
             get
             {
-                return _selectedvelocity;
+                return _selectedVelocity;
             }
             set
             {
-                _selectedvelocity = value;
+                _selectedVelocity = value;
                 _selectedAlarm = new AlarmMappingModel();
                 OnPropertyChanged("SelectedVelocity");
             }
@@ -211,8 +211,8 @@ namespace AvigilonProject.UI.ViewModel
             set
             {
                 _selectedAlarm = value;
-                _selectedvelocity = new VelocityModel();
-                _selectesavigilon=new AvigilonModel();
+                _selectedVelocity = new VelocityModel();
+                _selectesAvigilon=new AvigilonModel();
                 OnPropertyChanged("SelectedAlarmMappingModel");
             }
         }
@@ -295,7 +295,7 @@ namespace AvigilonProject.UI.ViewModel
             SelectedAlarmMappingModel = new AlarmMappingModel();
         }
         
-        private string _searchavigilon;
+        private string _searchAvigilon;
         /// <summary>
         /// To search for value in Avigilon
         /// </summary>
@@ -303,11 +303,11 @@ namespace AvigilonProject.UI.ViewModel
         {
             get
             {
-                return _searchavigilon;
+                return _searchAvigilon;
             }
             set
             {
-                _searchavigilon = value;
+                _searchAvigilon = value;
                 OnPropertyChanged("SearchAvigilon");
                 FilterCollectionAvigilon();
             }
@@ -331,7 +331,7 @@ namespace AvigilonProject.UI.ViewModel
         }
 
 
-        private string _searchvelocity;
+        private string _searchVelocity;
         /// <summary>
         /// To search for value in Velocity
         /// </summary>
@@ -339,11 +339,11 @@ namespace AvigilonProject.UI.ViewModel
         {
             get
             {
-                return _searchvelocity;
+                return _searchVelocity;
             }
             set
             {
-                _searchvelocity = value;
+                _searchVelocity = value;
                 OnPropertyChanged("SearchVelocity");
                 FilterCollectionVelocity();
             }
@@ -369,7 +369,7 @@ namespace AvigilonProject.UI.ViewModel
         }
 
 
-        private string _searchmapping;
+        private string _searchMapping;
         /// <summary>
         /// To search for value in Avigilon Mapping
         /// </summary>
@@ -377,11 +377,11 @@ namespace AvigilonProject.UI.ViewModel
         {
             get
             {
-                return _searchmapping;
+                return _searchMapping;
             }
             set
             {
-                _searchmapping = value;
+                _searchMapping = value;
                 OnPropertyChanged("SearchMap");
                 FilterCollectionMapping();
             }

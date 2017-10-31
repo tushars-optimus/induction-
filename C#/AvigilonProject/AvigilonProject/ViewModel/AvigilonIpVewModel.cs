@@ -12,14 +12,14 @@ namespace AvigilonProject.UI.ViewModel
 {
     public class AvigilonIpVewModel : AvigilonProjectViewModelBase
     {
-        private AvigilonIpVewModels IpAdd;
+        private AvigilonIpVewModels _ipAdd;
         public AvigilonIpVewModel()
         {
             IpModel = new IpModel();
             IpModels = new ObservableCollection<IpModel>();
             SelectIpModels = new IpModel();
-            IpAdd =new AvigilonIpVewModels();
-            Read(IpAdd);
+            _ipAdd =new AvigilonIpVewModels();
+            Read(_ipAdd);
         }
         AvigilonIpVewModels AvigilonIpobject = new AvigilonIpVewModels();
         private IpModel _ipmodel;
@@ -104,7 +104,7 @@ namespace AvigilonProject.UI.ViewModel
             dialogueService= new DialogueService();
             if (dialogueService != null)
                 dialogueService.ShowIpWindow();
-            Read(IpAdd);
+            Read(_ipAdd);
             
         }
         
@@ -138,7 +138,7 @@ namespace AvigilonProject.UI.ViewModel
         public void Removes(object parameter)
         {
             AvigilonIpobject.RemoveIp(SelectIpModels.IP);
-            Read(IpAdd);
+            Read(_ipAdd);
         }
         
     }

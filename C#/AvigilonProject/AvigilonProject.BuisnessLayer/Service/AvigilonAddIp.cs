@@ -6,8 +6,8 @@ namespace AvigilonProject.BuisnessLayer.Service
 {
     public class AvigilonAddIp
     {
-        const string status = "Ready";
-        const string Versions = "6.0.0.24";
+        const string _status = "Ready";
+        const string _version = "6.0.0.24";
         public EventHandler OperationInvalid;
         ProjectEntities _projectenties = new ProjectEntities();
         /// <summary>
@@ -42,7 +42,7 @@ namespace AvigilonProject.BuisnessLayer.Service
             }
             if (flag == 1)
             {
-                var entities = new Avigilon2 { IP = ip, Status = status, Version = Versions };
+                var entities = new Avigilon2 { IP = ip, Status = _status, Version = _version };
                 var existingIp = _projectenties.Avigilon2.Where(p => p.IP == ip).ToList();
                 if (existingIp.Count==0)
                 {

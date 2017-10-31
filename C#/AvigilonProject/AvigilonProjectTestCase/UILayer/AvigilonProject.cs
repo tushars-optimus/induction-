@@ -19,7 +19,8 @@ namespace AvigilonProjectTestCase.UILayer
     public class AvigilonProject
     {
         AvigilonProjecyBl _repository;
-        private IAvigilon _iavigilon;
+        
+
         [TestInitialize]
         public void Setup()
         {
@@ -45,7 +46,7 @@ namespace AvigilonProjectTestCase.UILayer
             AvigilonMock.Setup(m => m.ReadAlarmMapping()).Returns(Mappings);
             
             _repository = AvigilonMock.Object;
-            _iavigilon=new FakeAvigilonViewModel();
+            
             
         }
 

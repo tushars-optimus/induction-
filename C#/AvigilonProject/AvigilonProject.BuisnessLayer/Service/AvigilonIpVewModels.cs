@@ -51,9 +51,9 @@ namespace AvigilonProject.BuisnessLayer.Service
         /// <returns> </returns>
         public virtual List<IpModelBl> ReadIp()
         {
-            var ipdescription = _projectentities.Avigilon2.ToList();
+            var ipDescription = _projectentities.Avigilon2.ToList();
             var IpModel = new List<IpModelBl>();
-            foreach (var entity in ipdescription)
+            foreach (var entity in ipDescription)
             {
                 IpModel.Add(new IpModelBl
                 {
@@ -71,9 +71,9 @@ namespace AvigilonProject.BuisnessLayer.Service
         /// <param name="ips"></param>
         public void RemoveIp(string ips)
         {
-            var selecteditem = _projectentities.Avigilon2.Where(x => x.IP == ips).FirstOrDefault();
-            //Todo
-            _projectentities.Avigilon2.Remove(selecteditem);
+            var selectedItem = _projectentities.Avigilon2.Where(x => x.IP == ips).FirstOrDefault();
+            
+            _projectentities.Avigilon2.Remove(selectedItem);
             _projectentities.SaveChanges();
         }
     }

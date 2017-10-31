@@ -16,17 +16,17 @@ namespace AvigilonProject.UI.ViewModel
 {
     public class AvigilonIpAddViewModel: AvigilonProjectViewModelBase
     {
-        AvigilonIpVewModel _avigilonipvewmodel = new AvigilonIpVewModel();
-        AvigilonAddIp AddIpObject;
-        InvalidModel InvalidModel;
-        AvigilonIpVewModels IpAdd;
+        AvigilonIpVewModel _avigilonIpVewModel = new AvigilonIpVewModel();
+        AvigilonAddIp addIpObject;
+        InvalidModel invalidModel;
+        AvigilonIpVewModels ipAdd;
         public AvigilonIpAddViewModel()
         {
-            AddIpObject = new AvigilonAddIp();
-            InvalidModel = new InvalidModel();
+            addIpObject = new AvigilonAddIp();
+            invalidModel = new InvalidModel();
             IPs = new IpAddModel();
-            IpAdd = new AvigilonIpVewModels();
-            AddIpObject.OperationInvalid += InvalidShow;
+            ipAdd = new AvigilonIpVewModels();
+            addIpObject.OperationInvalid += InvalidShow;
         }
         static void InvalidShow(object sender, EventArgs e)
         {
@@ -68,16 +68,16 @@ namespace AvigilonProject.UI.ViewModel
             else
                 return true;
         }
-         private DialogueService dialogueService ;
+         private DialogueService _dialogueservice ;
         public void Save(object parameter)
          {
-            dialogueService = new DialogueService();
-            AddIpObject.Save(IPs.IP); 
+            _dialogueservice = new DialogueService();
+            addIpObject.Save(IPs.IP); 
             IPs.IP = string.Empty;
-            _avigilonipvewmodel.Read(IpAdd);
+            _avigilonIpVewModel.Read(ipAdd);
             
-            if (dialogueService != null)
-                dialogueService.CloseIpWindow();
+            if (_dialogueservice != null)
+                _dialogueservice.CloseIpWindow();
         }
     }
 }

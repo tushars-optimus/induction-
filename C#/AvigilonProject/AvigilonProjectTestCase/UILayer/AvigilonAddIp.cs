@@ -6,6 +6,7 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AvigilonProject.ViewModel;
 
 namespace AvigilonProjectTestCase.UILayer
 {
@@ -13,42 +14,66 @@ namespace AvigilonProjectTestCase.UILayer
     public class AvigilonAddIp
     {
     AvigilonIpVewModels _repository;
+
     [TestInitialize]
     public void Setup()
     {
-        var Ips = new List<IpModelBl>()
+        var ips = new List<IpModelBl>()
             {
                 new IpModelBl(){IP="1.2.41.1",Status="Ready",Version="1.23"},
                 new IpModelBl(){IP="1.2.45.1",Status="Ready",Version="1.23"}
             };
-        var AvigiloAddnMock = new Mock<AvigilonIpVewModels>();
-        AvigiloAddnMock.Setup(r => r.ReadIp()).Returns(Ips);
-        _repository = AvigiloAddnMock.Object;
+        var avigilonAddnMock = new Mock<AvigilonIpVewModels>();
+        avigilonAddnMock.Setup(r => r.ReadIp()).Returns(ips);
+        _repository = avigilonAddnMock.Object;
     }
+
     [TestMethod]
    public void Ips_IpReadOnly_IsPopulated()
     {
         //Arrange
-        var AvigilonIpVewModel = new AvigilonIpVewModel();
+        var avigilonIpVewModel = new AvigilonIpVewModel();
 
         //Act
-        AvigilonIpVewModel.Read(_repository);
+        avigilonIpVewModel.Read(_repository);
 
         //Assert
-        Assert.IsNotNull(AvigilonIpVewModel.IpModels);
-        Assert.AreEqual(AvigilonIpVewModel.IpModels.Count(), 2);
+        Assert.IsNotNull(avigilonIpVewModel.IpModels);
+        Assert.AreEqual(avigilonIpVewModel.IpModels.Count(), 2);
     }
 
     [TestMethod]
     [ExpectedException(typeof(NullReferenceException), "Null value")]
-    public void Velocitys_IpReadOnly_IsNull()
+    public void Ips_IpReadOnly_IsNull()
     {
         //Arrange
-        var AvigilonIpVewModel = new AvigilonIpVewModel();
+        var avigilonIpVewModel = new AvigilonIpVewModel();
         //Act
-        AvigilonIpVewModel.Read(null);
+        avigilonIpVewModel.Read(null);
     }
 
-  
+    [TestMethod]
+    public void Remove_RemoveCommand_IsPopulated()
+    {
+        //Arrange
+        FakeAvigilonViewModel addIp = new FakeAvigilonViewModel();
+        //Act
+        addIp.RemoveIp("1.1.1.1");
+        //Assert
+        Assert.IsTrue(addIp.FLagIp);
+        
+    }
+
+    [TestMethod]
+    public void Remove_RemoveCommand_IsNull()
+    {
+        //Arrange
+        FakeAvigilonViewModel addIp = new FakeAvigilonViewModel();
+        //Act
+        addIp.RemoveIp("null");
+        //Assert
+        Assert.IsFalse(addIp.FLagIp);
+
+    }
     }
 }

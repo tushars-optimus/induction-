@@ -8,10 +8,12 @@ namespace AvigilonProject.UI.Model
 {
     public class AvigilonModel
     {
-        #region Private Region
+        #region Private variables
         private string _alarm;
         private string _site;
         #endregion
+
+        #region Public variable
         public string Alarm
         {
             get { return _alarm; }
@@ -23,8 +25,9 @@ namespace AvigilonProject.UI.Model
             get { return _site; }
             set { _site = value; }
         }
-        
-        
+        #endregion
+
+
     }
   
 }

@@ -16,19 +16,19 @@ namespace AvigilonProject.BuisnessLayer
         /// <returns>AvigilonModel</returns>
         public virtual List<AlarmSite> ReadAvigilons()
         {
-            //todo
-            var Cameras = _projectentities.Avigilons.ToList();
-            var AvigilonModel = new List<AlarmSite>();
-            foreach (var entity in Cameras)
+            
+            var alarmSites = _projectentities.Avigilons.ToList();
+            var avigilonModel = new List<AlarmSite>();
+            foreach (var entity in alarmSites)
             {
-                AvigilonModel.Add(new AlarmSite
+                avigilonModel.Add(new AlarmSite
                 {
                     Alarm = entity.Alarm,
                     Site=entity.Sites
                 });
             }
 
-            return AvigilonModel;
+            return avigilonModel;
         }
         /// <summary>
         /// To read value from Velocity
@@ -37,16 +37,16 @@ namespace AvigilonProject.BuisnessLayer
         public virtual List<Velocity> ReadVelocity()
         {
             var description = _projectentities.Alarm_Description.ToList();
-            var VelocityModel = new List<Velocity>();
+            var velocityModel = new List<Velocity>();
             foreach (var entity in description)
             {
-                VelocityModel.Add(new Velocity
+                velocityModel.Add(new Velocity
                 {
                     Description = entity.Descriptions
                 });
             }
 
-            return VelocityModel;
+            return velocityModel;
         } 
         /// <summary>
         /// To map Alarm and Velocity in Alarm Mapping model

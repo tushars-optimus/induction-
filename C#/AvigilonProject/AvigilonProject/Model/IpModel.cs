@@ -8,10 +8,13 @@ namespace AvigilonProject.UI.Model
 {
     public class IpModel
     {
+        #region Private variables
         private string _ip;
         private string _version;
         private string _status;
+        #endregion
 
+        #region Public variables
         public string IP
         {
             get { return _ip; }
@@ -31,8 +34,8 @@ namespace AvigilonProject.UI.Model
             get { return _status; }
             set { _status = value; }
         }
-        
-        
-        
+        #endregion
+
+
     }
 }

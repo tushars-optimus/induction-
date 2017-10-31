@@ -9,8 +9,14 @@ using AvigilonProject.BuisnessLayer;
 
 namespace AvigilonProject.ViewModel
 {
-    public class FakeAvigilonViewModel : IAvigilon
+    public class FakeAvigilonViewModel : IAvigilon,IAddIP
     {
+        #region Private Region
+        private bool _flags;
+        private bool _flagd;
+        private bool _flagIp;
+        #endregion
+
         public List<BuisnessLayer.Model.AlarmSite> ReadAvigilons()
         {
             throw new NotImplementedException();
@@ -20,15 +26,14 @@ namespace AvigilonProject.ViewModel
         {
             throw new NotImplementedException();
         }
-        private bool _flags;
-
+        
         public bool Flags
         {
             get { return _flags; }
             set { _flags = value; }
         }
 
-        private bool _flagd;
+        
 
         public bool Flagd
         {
@@ -66,6 +71,32 @@ namespace AvigilonProject.ViewModel
             else
             {
                 Flagd = true;
+            }
+        }
+
+        public List<IpModelBl> ReadIp()
+        {
+            throw new NotImplementedException();
+        }
+        
+
+        public bool FLagIp
+        {
+            get { return _flagIp; }
+            set { _flagIp = value; }
+        }
+        
+        public void RemoveIp(string ips)
+        {
+            switch(ips)
+            {
+                case "1.1.1.1": FLagIp = true;
+                    break;
+                case "1.2.3.4": FLagIp = true;
+                    break;
+                default: FLagIp = false;
+                    break;
+
             }
         }
     }

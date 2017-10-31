@@ -6,18 +6,18 @@ namespace AvigilonProject.UI.Commands
     /// <summary>
     /// To bind button to different action
     /// </summary>
-    public class RelayCommand:ICommand
+    public class RelayCommand : ICommand
     {
         Action<object> executeMethod1;
-        Func<object, bool> canexecutemethod1;
-        public RelayCommand(Action<object> executeMethod, Func<object, bool> canexecutemethod)
+        Func<object, bool> canExecuteMethod1;
+        public RelayCommand(Action<object> executeMethod, Func<object, bool> canExecuteMethod)
         {
             this.executeMethod1 = executeMethod;
-            this.canexecutemethod1 = canexecutemethod;
+            this.canExecuteMethod1 = canExecuteMethod;
         }
         public bool CanExecute(object parameter)
         {
-            return canexecutemethod1(parameter);
+            return canExecuteMethod1(parameter);
         }
 
         public event EventHandler CanExecuteChanged

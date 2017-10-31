@@ -58,7 +58,7 @@
     <Compile Include="Model\AlarmSite.cs" />
     <Compile Include="Service\IAddIP.cs" />
     <Compile Include="Service\IAvigilon.cs" />
-    <Compile Include="Model\IpModelB.cs" />
+    <Compile Include="Model\IpModel.cs" />
     <Compile Include="Model\Velocity.cs" />
     <Compile Include="AvigilonProjecyBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

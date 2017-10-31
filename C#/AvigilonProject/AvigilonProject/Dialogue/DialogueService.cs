@@ -12,24 +12,24 @@ namespace AvigilonProject.UI.Dialogue
     /// </summary>
     class DialogueService
     {
-            static ConnectionView connectionview;  //remove static
+            private static ConnectionView _connectionView;  
 
             public DialogueService()
             {
-                if (connectionview == null)
-                    connectionview = new ConnectionView();
+                if (_connectionView == null)
+                    _connectionView = new ConnectionView();
             }
             public void ShowIpWindow()
             {
-                if (connectionview != null)
-                    connectionview.ShowDialog();
-                connectionview = null;
+                if (_connectionView != null)
+                    _connectionView.ShowDialog();
+                _connectionView = null;
             }
             public void CloseIpWindow()
             {
-                if (connectionview != null)
-                    connectionview.Close();
-                connectionview = null;
+                if (_connectionView != null)
+                    _connectionView.Close();
+                _connectionView = null;
             }
         }
     
